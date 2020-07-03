@@ -10,7 +10,7 @@ function getBattleReportFromContent(messagecontainer) {
     // the messagecontent consists of 3 elements
     // message-top, message and message-bottom
     battleReportObject.time = getBattleTime(messagecontainer);
-    console.log(battleReportObject.time);    
+    //console.log(battleReportObject.time);    
 
     // iterate through the elements of the message
     let container = messagecontainer.getElementsByClassName("container")[0].children;
