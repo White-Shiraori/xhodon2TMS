@@ -8,11 +8,9 @@ let targetNode = document.getElementById('content');
 
 // Callback function to execute when mutations are observed
 const callback = function(mutationsList, observer) {
-    
+
     // Use traditional 'for loops' for IE 11
     for(let mutation of mutationsList) {
-        console.log(mutation.type);
-
         if (mutation.type === 'childList') {
             if (targetNode.getElementsByClassName("kbTable designedTable")[0] != undefined) {
                 changeBattleReport(document.getElementById("messagecontainer"));

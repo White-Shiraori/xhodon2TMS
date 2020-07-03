@@ -1,11 +1,6 @@
 // input Content Element
 // return battleReportObject
 function getBattleReportFromContent(messagecontainer) {
-    
-    // This describes a battle report in Xhodon2.
-    let battleReportObject = {
-        time: "",
-    };
 
     // the messagecontent consists of 3 elements
     // message-top, message and message-bottom
@@ -13,19 +8,57 @@ function getBattleReportFromContent(messagecontainer) {
     //console.log(battleReportObject.time);    
 
     // iterate through the elements of the message
-    let container = messagecontainer.getElementsByClassName("container")[0].children;
-    console.log(messagecontainer.getElementsByClassName("container"));
-    
+    let container = messagecontainer.getElementsByClassName("container")[0].children;   
+    setMessageElements(container);
 
-    // old for loop b/c children is array like and Array.from didnt work
-    for (let index = 0; index < container.length; index++) {
-        const element = container[index];
-        element.style.display = "none";
-        
-        
-    }
-
+    // return the now filled object
+    return battleReportObject;
 };
+    
+// This describes a battle report in Xhodon2.
+let battleReportObject = {
+    time: "Fri,  3. Jul 20 xx:xx:xx",
+    subject: "You attacked at xx:xx:xx",
+};
+
+// save the message line and hide
+function setMessageElements(container) {
+
+    // temporary variable
+    let isAttacking = undefined;
+    let isReceiverWinning = false;
+
+    // iterate through the elements of the message
+    for (let msgline of Array.from(container)) {
+
+        // hide the original element
+        msgline.style.display = "none";
+
+        // switch through the element tag
+        switch (msgline.tagName) {
+            case "H2":
+                // this is the subject
+                battleReportObject.subject = msgline.innerHTML;
+                break;
+            case "DIV":
+                if ("victory" === msgline.className) {
+                    isReceiverWinning = true;
+                }
+                break;
+            case "B":
+                // text such as Attacker/Defender
+                break;
+            case "TABLE":
+                // Unit Table or Ingrediants
+                if ("kbTable designedTable" === msgline.className) {
+
+                }
+                break;
+            default:
+                break;
+        }
+   }
+}
 
 // retrieve the time from the header
 // hides the original header

@@ -2,8 +2,6 @@
 // @name         Xhodon2TMS
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @updateURL    https://github.com/White-Shiraori/xhodon2TMS/raw/master/Xhodon2TMS.js
-// @downloadURL  https://github.com/White-Shiraori/xhodon2TMS/raw/master/Xhodon2TMS.js
 // @description  Lets make Xhodon great again.
 // @author       Sinaca, Dhymar, White
 // @match        https://*.xhodon2.com/*
