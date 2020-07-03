@@ -13,11 +13,14 @@ function getBattleReportFromContent(messagecontainer) {
     console.log(battleReportObject.time);    
 
     // iterate through the elements of the message
-    let message = messagecontainer.getElementsByClassName("message")[0];
-    let container = message.getElementsByClassName("container")[0];
+    let container = messagecontainer.getElementsByClassName("container")[0].children;
 
-    for (let msg of Array.from(container.children)) {
-        console.log(msg);        
+    // old for loop b/c children is array like and Array.from didnt work
+    for (let index = 0; index < container.length; index++) {
+        const element = container[index];
+        console.log(element);
+        
+        
     }
 
 };
