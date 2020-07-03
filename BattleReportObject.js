@@ -4,7 +4,7 @@ function getBattleReportFromContent(messagecontainer) {
 
     // the messagecontent consists of 3 elements
     // message-top, message and message-bottom
-    battleReportObject.time = getBattleTime(messagecontainer);
+    setBattleTime(messagecontainer);
     //console.log(battleReportObject.time);    
 
     // iterate through the elements of the message
@@ -62,7 +62,7 @@ function setMessageElements(container) {
 
 // retrieve the time from the header
 // hides the original header
-function getBattleTime(messagecontainer) {
+function setBattleTime(messagecontainer) {
     // message-top only contains the time
     let mtop = messagecontainer.getElementsByClassName("message-top")[0];
 
@@ -70,5 +70,5 @@ function getBattleTime(messagecontainer) {
     mtop.style.display = "none";
 
     let mtoptext = mtop.children[0].children[0].innerHTML;
-    return mtoptext.split(" am ")[1];
+    battleReportObject.time = mtoptext.split(" am ")[1];
 }
