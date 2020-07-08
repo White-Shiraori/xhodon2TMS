@@ -48,9 +48,7 @@ function setMessageElements(container) {
     };
 
     // iterate through the elements of the message
-    for (let msgline of Array.from(container)) {
-        console.log(msgline);
-        
+    for (let msgline of Array.from(container)) {        
 
         // switch through the element tag
         switch (msgline.tagName) {
@@ -61,8 +59,8 @@ function setMessageElements(container) {
             case "DIV":
                 if ("victory" === msgline.className) {
                     battleReportObject.receiver.isWinning = true;
-                    let bann = document.createElement("div");
                     battleReportObject.banner = msgline;
+                    battleReportObject.banner.style.paddingTop = none;
                 }
                 break;
             case "B":
