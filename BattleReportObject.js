@@ -11,7 +11,9 @@ function getBattleReportFromContent(messagecontainer, isSimulation) {
     //console.log(battleReportObject.time);   
 
     // iterate through the elements of the message
-    let container = messagecontainer.getElementsByClassName("container")[0].children;   
+    let container = messagecontainer.getElementsByClassName("container")[0].childNodes;
+    console.log(container);
+       
     setMessageElements(container);
 
     // return the now filled object
