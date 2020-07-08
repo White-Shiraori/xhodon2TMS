@@ -122,3 +122,7 @@ function createSummaryTable(battleReportObject){ // ToDo: Woher die insgesamten 
   
     return tbl;
 };
+
+function addThousandsSep(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
