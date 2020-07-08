@@ -33,6 +33,7 @@ function changeBattleReport(content) {
         // simulation mode
         // TODO impl
         // battleReport = getBattleReportFromContent(event, true);
+        return;
     }
 
     // hide old battle report
