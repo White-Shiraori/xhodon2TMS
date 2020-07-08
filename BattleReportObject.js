@@ -60,7 +60,13 @@ function setMessageElements(container) {
                 if ("victory" === msgline.className) {
                     battleReportObject.receiver.isWinning = true;
                     battleReportObject.banner = msgline;
-                    battleReportObject.banner.style.paddingTop = none;
+                    battleReportObject.banner.style.paddingTop = 0;
+                    battleReportObject.banner.style.height = auto;
+
+                    let resultsprite = battleReportObject.banner.children[0];
+                    resultsprite.style.marginBottom = 0;
+                    let resulttext = battleReportObject.banner.children[1];
+                    resulttext.innerHTML = "";
                 }
                 break;
             case "B":
