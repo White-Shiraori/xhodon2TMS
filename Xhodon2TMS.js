@@ -5,6 +5,7 @@
 // @description  Lets make Xhodon great again.
 // @author       Sinaca, Dhymar, White
 // @match        https://*.xhodon2.com/*
+// @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/Settings.js
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/UnitValues.js
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/StyleSheet.js
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/Utility.js
@@ -17,7 +18,7 @@
 // ==/UserScript==
 
 // Here you can add description what we are doing :D 
-// Sina please write somthing :P
+// Sina please write something :P
 
 // Just add this in Tampermonkey
 

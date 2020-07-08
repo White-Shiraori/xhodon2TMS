@@ -13,7 +13,7 @@ const callback = function(mutationsList, observer) {
     for(let mutation of mutationsList) {
         if (mutation.type === 'childList') {
             if (targetNode.getElementsByClassName("kbTable designedTable")[0] != undefined) {
-                changeBattleReport(document.getElementById("messagecontainer"));
+                changeBattleReport(targetNode);
                 break;
             }
         }
