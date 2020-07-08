@@ -8,6 +8,9 @@ function showNewBattleReport(battleReport) {
     // same className as original to get same CSS
     // only change if you replace complete CSS
     maindiv.className = "container"; 
+
+    // banner
+    maindiv.append(battleReport.banner);
     
     // Summary Table
     let summary = createSummaryTable(battleReport);

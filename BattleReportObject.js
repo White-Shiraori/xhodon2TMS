@@ -12,7 +12,6 @@ function getBattleReportFromContent(messagecontainer, isSimulation) {
 
     // iterate through the elements of the message
     let container = messagecontainer.getElementsByClassName("container")[0].childNodes;
-    console.log(container);
        
     setMessageElements(container);
 
@@ -23,36 +22,47 @@ function getBattleReportFromContent(messagecontainer, isSimulation) {
 // This describes a battle report in Xhodon2.
 let battleReportObject = {
     isSimulation: false,
+    banner: undefined,
     time: "Fri,  3. Jul 20 xx:xx:xx",
     subject: {
         free: "PWNZ OMG LOL",
         original: "You attacked at xx:xx:xx",
     },
-    isReceiverWinning: true,
+    fightRounds: 0,
+    receiver: {
+        isWinning: false,
+        isAttacking: true,
+        items: "",
+        ingredients: "",
+        runes: 0,
+    },
 };
 
 // save the message line and hide
 function setMessageElements(container) {
 
-    // temporary variable
-    let isAttacking = undefined;
-    let isReceiverWinning = false;
+    // participant in war
+    let participant = {
+        name: "",
+        hero: "",
+    };
 
     // iterate through the elements of the message
     for (let msgline of Array.from(container)) {
-
-        // hide the original element
-        msgline.style.display = "none";
+        console.log(msgline);
+        
 
         // switch through the element tag
         switch (msgline.tagName) {
             case "H2":
                 // this is the subject
-                battleReportObject.subject = msgline.innerHTML;
+                battleReportObject.subject.free = msgline.innerHTML;
                 break;
             case "DIV":
                 if ("victory" === msgline.className) {
-                    isReceiverWinning = true;
+                    battleReportObject.receiver.isWinning = true;
+                    let bann = document.createElement("div");
+                    battleReportObject.banner = msgline;
                 }
                 break;
             case "B":
@@ -64,6 +74,20 @@ function setMessageElements(container) {
 
                 }
                 break;
+            case undefined:
+                if (msgline.textContent.indexOf("attacked") > 0) {
+                    battleReportObject.receiver.isAttacking = true;
+                    battleReportObject.subject.original = msgline.wholeText;
+                }
+                if (msgline.textContent.indexOf("defended") > 0) {
+                    battleReportObject.receiver.isAttacking = false;
+                    battleReportObject.subject.original = msgline.wholeText;
+                }
+                if (msgline.textContent.indexOf("Rounds") > 0) {
+                    battleReportObject.fightRounds = Number.parseInt(msgline.textContent.split(":")[1]);
+                }
+                break;
+                
             default:
                 break;
         }
