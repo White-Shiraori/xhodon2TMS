@@ -11,6 +11,8 @@ function showNewBattleReport(battleReport) {
 
     // banner
     maindiv.append(battleReport.banner);
+    maindiv.append(document.createElement("br"));
+    maindiv.append(document.createElement("br"));
     
     // Summary Table
     let summary = createSummaryTable(battleReport);
