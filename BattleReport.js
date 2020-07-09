@@ -18,6 +18,10 @@ function showNewBattleReport(battleReport) {
     let summary = createSummaryTable(battleReport);
     maindiv.append(summary);
     
+    // Bounty
+
+    // Runes, Items, Ingredients
+
     // return the element
     return maindiv;
 }
@@ -25,7 +29,7 @@ function showNewBattleReport(battleReport) {
 
 // This will change the Battle Report
 // Please do NOT make changes here!
-function changeBattleReport(content) {
+function changeBattleReport(content, user) {
     // first we genereate an object from the message 
     // and hide the original content.
     let event = content.getElementsByClassName("event")[0];
@@ -33,11 +37,11 @@ function changeBattleReport(content) {
     let battleReport;
     if (event === undefined) {
         // battle report
-        battleReport = getBattleReportFromContent(battle, false);
+        battleReport = getBattleReportFromContent(battle, user, false);
     } else {
         // simulation mode
         // TODO impl
-        // battleReport = getBattleReportFromContent(event, true);
+        // battleReport = getBattleReportFromContent(event, user, true);
         return;
     }
 

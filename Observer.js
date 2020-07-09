@@ -6,6 +6,13 @@
 // The content element is used for all popups in Xhodon2
 let targetNode = document.getElementById('content');
 
+// User of the script
+let menueUser = document.getElementById("menu-user");
+let user = {
+    name: menueUser.getElementsByClassName("userlink_name")[0].textContent,
+    guild: menueUser.getElementsByClassName("userlink_tag")[0].textContent,
+};
+
 // Callback function to execute when mutations are observed
 const callback = function(mutationsList, observer) {
 
@@ -13,7 +20,7 @@ const callback = function(mutationsList, observer) {
     for(let mutation of mutationsList) {
         if (mutation.type === 'childList') {
             if (targetNode.getElementsByClassName("kbTable designedTable")[0] != undefined) {
-                changeBattleReport(targetNode);
+                changeBattleReport(targetNode, user);
                 break;
             }
         }
