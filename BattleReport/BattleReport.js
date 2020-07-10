@@ -1,6 +1,6 @@
 // Show the new Battle Report
 // Sina, have fun :D
-function showNewBattleReport(battleReport) {
+function showNewBattleReport(battleReport, user) {
 
     // our own div with the battle report
     let maindiv = document.createElement("div");
@@ -37,7 +37,7 @@ function changeBattleReport(content, user) {
     let battleReport;
     if (event === undefined) {
         // battle report
-        battleReport = getBattleReportFromContent(battle, user, false);
+        battleReport = getBattleReportFromContent(battle, false);
     } else {
         // simulation mode
         // TODO impl
@@ -51,6 +51,6 @@ function changeBattleReport(content, user) {
 
     // Now lets show whats really important
     let message = battle.getElementsByClassName("message")[0];
-    let maindiv = showNewBattleReport(battleReport);
+    let maindiv = showNewBattleReport(battleReport, user);
     message.append(maindiv);
 };

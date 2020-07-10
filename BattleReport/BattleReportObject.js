@@ -1,6 +1,6 @@
-// input Content Element
+// input messagecontainer Element
 // return battleReportObject
-function getBattleReportFromContent(messagecontainer, user, isSimulation) {
+function getBattleReportFromContent(messagecontainer, isSimulation) {
 
     // simulation mode
     battleReportObject.isSimulation = isSimulation;
@@ -45,16 +45,20 @@ let battleReportObject = {
 // save the message line and hide
 function setMessageElements(container) {
 
+    let tempParticipant = undefined;
     let isAttacker = false;
     let isDefender = false;
     let isAttackerTotal = false;
     let isDefenderTotal = false;
 
     // reset participants
-    battleReportObject.participants = undefined;
+    battleReportObject.participants = new Array();
 
     // counter of participants
     let participantCounter = 0;
+
+    // counter of items
+    let itemCounter = 0;
 
     // iterate through the elements of the message
     for (let msgline of Array.from(container)) {        
@@ -110,43 +114,108 @@ function setMessageElements(container) {
                 if ("kbTable designedTable" === msgline.className) {
                     if (isAttackerTotal) {
                         // this is the Attacker(Total)
-                        Object.create(participant);
+                        let parti = Object.create(participant);
+                        parti.isAttackerTotal = true;
+                        parti.battle = msgline;
+                        battleReportObject.participants[participantCounter] = parti;
+                        participantCounter++;
                         break;
                     }
                     if (isDefenderTotal) {
                         // this is the Defender(Total)
+                        let parti = Object.create(participant);
+                        parti.isDefenderTotal = true;
+                        parti.battle = msgline;
+                        battleReportObject.participants[participantCounter] = parti;
+                        participantCounter++;
                         break;
                     }
-                    if (isAttacker) {
-                        // this is the Attacker
-                        break;
-                    }
-                    if (isDefender) {
-                        // this is the Defender
-                        break;
-                    }
+                    tempParticipant.battle = msgline;
+                    break;                    
                 }
-                // hero
+                // Hero
                 if (msgline.textContent.indexOf("Hero") > 0) {
+                    // new participant
+                    if (tempParticipant != undefined) {
+                        battleReportObject.participants[participantCounter] = tempParticipant;
+                        participantCounter++;
+                        itemCounter = 0;
+                    }
+                    tempParticipant = undefined;
+                    tempParticipant = Object.create(participant);
+                    tempParticipant.isAttacker = isAttacker;
+                    tempParticipant.isDefender = isDefender;
+                    tempParticipant.isSentinel = false;
+                    tempParticipant.player = msgline;
+                    break;
                 }
-                // sentinel
+                // Palace
+                if (msgline.textContent.indexOf("Palace") > 0) {
+                    // new participant
+                    if (tempParticipant != undefined) {
+                        battleReportObject.participants[participantCounter] = tempParticipant;
+                        participantCounter++;
+                    }
+                    tempParticipant = undefined;
+                    tempParticipant = Object.create(participant);
+                    tempParticipant.isAttacker = false;
+                    tempParticipant.isDefender = true;
+                    tempParticipant.isSentinel = false;
+                    tempParticipant.player = msgline;
+                    break;
+                }
+                // Sentinel
                 if (msgline.textContent.indexOf("Sentinel") > 0) {
+                    // new participant
+                    if (tempParticipant != undefined) {
+                        battleReportObject.participants[participantCounter] = tempParticipant;
+                        participantCounter++;
+                    }
+                    tempParticipant = undefined;
+                    tempParticipant = Object.create(participant);
+                    tempParticipant.isAttacker = isAttacker;
+                    tempParticipant.isDefender = isDefender;
+                    tempParticipant.isSentinel = true;
+                    tempParticipant.player = msgline;
+                    break;
+                }
+                // Ressurection
+                if (msgline.textContent.indexOf("%") > 0) {
+                    let cellsTemp = msgline.rows[0].cells;
+                    if (cellsTemp[1] === undefined) {
+                        // hero has no skill
+                        tempParticipant.ressuractionRate = cellsTemp[0].textContent.split("%")[0].split(" ").last();
+                    } else {
+                        // hero has skill
+                        tempParticipant.ressuractionRate = rowsTemp[0].cells[1].childNodes[1].textContent;
+                    }
+                    break;
+                }
+                // Ressources raided
+                if (msgline.textContent.indexOf("Raided") > 0) {
+                    tempParticipant.raided = msgline;
+                    break;
+                }
+                // Stone Mantle and Crystal Tower
+                if (msgline.textContent.indexOf("Stone Mantle") > 0 || msgline.textContent.indexOf("Crystal Tower") > 0) {
+                    tempParticipant.defenseBuilding = msgline;
+                    break;
                 }
                 break;
             case "STRONG":
                 // Attacker(Total)
                 if (msgline.textContent.indexOf("Attacker") > 0) {
-                    participant.isAttacker = false;
-                    participant.isDefender = false;
-                    participant.isAttackerTotal = true;
-                    participant.isDefenderTotal = false;
+                    isAttacker = false;
+                    isDefender = false;
+                    isAttackerTotal = true;
+                    isDefenderTotal = false;
                 }
                 // Defender(Total)
                 if (msgline.textContent.indexOf("Defender") > 0) {
-                    participant.isAttacker = false;
-                    participant.isDefender = false;
-                    participant.isAttackerTotal = false;
-                    participant.isDefenderTotal = true;
+                    isAttacker = false;
+                    isDefender = false;
+                    isAttackerTotal = false;
+                    isDefenderTotal = true;
                 }
                 break;
             case "P":
@@ -172,23 +241,21 @@ function setMessageElements(container) {
                     battleReportObject.fightRounds = Number.parseInt(msgline.textContent.split(":")[1]);
                 }
                 break;
-                
+            case "IMG":
+                // Items are only kept as images
+                tempParticipant.items[itemCounter] = msgline;
+                itemCounter++;
+                break;
             default:
                 break;
         }
-   }
+    }
+    // last participant
+    if (tempParticipant != undefined) {
+        battleReportObject.participants[participantCounter] = tempParticipant;
+        participantCounter++;
+    }
 }
-    
-// participant in war
-let participant = {
-    name: "",
-    hero: "",
-    isAttacker: false,
-    isDefender: false,
-    isAttackerTotal: false,
-    isDefenderTotal: false,
-    isSentinel: false,
-};
 
 // retrieve the time from the header
 // hides the original header

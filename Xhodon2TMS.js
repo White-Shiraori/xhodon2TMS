@@ -9,8 +9,9 @@
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/UnitValues.js
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/StyleSheet.js
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/Utility.js
-// @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/BattleReportObject.js
-// @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/BattleReport.js
+// @require      https://github.com/White-Shiraori/xhodon2TMS/BattleReport/raw/master/BattleReportStyle.js
+// @require      https://github.com/White-Shiraori/xhodon2TMS/BattleReport/raw/master/BattleReportObject.js
+// @require      https://github.com/White-Shiraori/xhodon2TMS/BattleReport/raw/master/BattleReport.js
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/Observer.js
 // @grant        GM_addStyle
 // @grant        GM_getValue
