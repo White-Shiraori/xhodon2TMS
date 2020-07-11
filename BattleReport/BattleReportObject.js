@@ -110,6 +110,12 @@ function setMessageElements(container) {
                 }
                 break;
             case "TABLE":
+                console.log(msgline.className);
+                console.log(isAttacker);
+                console.log(isDefender);
+                console.log(isAttackerTotal);
+                console.log(isDefenderTotal);
+                
                 // Unit Table or Ingrediants
                 if ("kbTable designedTable" === msgline.className) {
                     if (isAttackerTotal) {
