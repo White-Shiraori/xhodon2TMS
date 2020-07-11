@@ -98,14 +98,14 @@ function setMessageElements(container) {
                 console.log(msgline.textContent);
                 
                 // Attacker
-                if (msgline.textContent.indexOf("Attacker") > 0) {
+                if (msgline.textContent.indexOf("Attacker") >= 0) {
                     isAttacker = true;
                     isDefender = false;
                     isAttackerTotal = false;
                     isDefenderTotal = false;
                 }
                 // Defender
-                if (msgline.textContent.indexOf("Defender") > 0) {
+                if (msgline.textContent.indexOf("Defender") >= 0) {
                     isAttacker = false;
                     isDefender = true;
                     isAttackerTotal = false;
@@ -145,7 +145,7 @@ function setMessageElements(container) {
                     break;                    
                 }
                 // Hero
-                if (msgline.textContent.indexOf("Hero") > 0) {
+                if (msgline.textContent.indexOf("Hero") >= 0) {
                     // new participant
                     if (tempParticipant != undefined) {
                         battleReportObject.participants[participantCounter] = tempParticipant;
@@ -161,7 +161,7 @@ function setMessageElements(container) {
                     break;
                 }
                 // Palace
-                if (msgline.textContent.indexOf("Palace") > 0) {
+                if (msgline.textContent.indexOf("Palace") >= 0) {
                     // new participant
                     if (tempParticipant != undefined) {
                         battleReportObject.participants[participantCounter] = tempParticipant;
@@ -176,7 +176,7 @@ function setMessageElements(container) {
                     break;
                 }
                 // Sentinel
-                if (msgline.textContent.indexOf("Sentinel") > 0) {
+                if (msgline.textContent.indexOf("Sentinel") >= 0) {
                     // new participant
                     if (tempParticipant != undefined) {
                         battleReportObject.participants[participantCounter] = tempParticipant;
@@ -203,12 +203,12 @@ function setMessageElements(container) {
                     break;
                 }
                 // Ressources raided
-                if (msgline.textContent.indexOf("Raided") > 0) {
+                if (msgline.textContent.indexOf("Raided") >= 0) {
                     tempParticipant.raided = msgline;
                     break;
                 }
                 // Stone Mantle and Crystal Tower
-                if (msgline.textContent.indexOf("Stone Mantle") > 0 || msgline.textContent.indexOf("Crystal Tower") > 0) {
+                if (msgline.textContent.indexOf("Stone Mantle") >= 0 || msgline.textContent.indexOf("Crystal Tower") >= 0) {
                     tempParticipant.defenseBuilding = msgline;
                     break;
                 }
@@ -217,14 +217,14 @@ function setMessageElements(container) {
                 console.log("total attacker and defener");
                 console.log(msgline.textContent);
                 // Attacker(Total)
-                if (msgline.textContent.indexOf("Attacker") > 0) {
+                if (msgline.textContent.indexOf("Attacker") >= 0) {
                     isAttacker = false;
                     isDefender = false;
                     isAttackerTotal = true;
                     isDefenderTotal = false;
                 }
                 // Defender(Total)
-                if (msgline.textContent.indexOf("Defender") > 0) {
+                if (msgline.textContent.indexOf("Defender") >= 0) {
                     isAttacker = false;
                     isDefender = false;
                     isAttackerTotal = false;
@@ -233,24 +233,24 @@ function setMessageElements(container) {
                 break;
             case "P":
                 // Items
-                if (msgline.textContent.indexOf("Item") > 0) {
+                if (msgline.textContent.indexOf("Item") >= 0) {
                     battleReportObject.receiver.hasItems = true;
                 }
                 // Runes
-                if (msgline.textContent.indexOf("Rune") > 0) {
+                if (msgline.textContent.indexOf("Rune") >= 0) {
                     battleReportObject.receiver.hasRunes = true;
                 }
                 break;
             case undefined:
-                if (msgline.textContent.indexOf("attacked") > 0) {
+                if (msgline.textContent.indexOf("attacked") >= 0) {
                     battleReportObject.receiver.isAttacking = true;
                     battleReportObject.subject.original = msgline.textContent;
                 }
-                if (msgline.textContent.indexOf("defended") > 0) {
+                if (msgline.textContent.indexOf("defended") >= 0) {
                     battleReportObject.receiver.isAttacking = false;
                     battleReportObject.subject.original = msgline.textContent;
                 }
-                if (msgline.textContent.indexOf("Rounds") > 0) {
+                if (msgline.textContent.indexOf("Rounds") >= 0) {
                     battleReportObject.fightRounds = Number.parseInt(msgline.textContent.split(":")[1]);
                 }
                 break;
