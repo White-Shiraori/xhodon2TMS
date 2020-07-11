@@ -93,10 +93,7 @@ function setMessageElements(container) {
                     resulttext.innerHTML = "";
                 }
                 break;
-            case "B":
-                console.log("B for attacker and defender");
-                console.log(msgline.textContent);
-                
+            case "B":                
                 // Attacker
                 if (msgline.textContent.indexOf("Attacker") >= 0) {
                     isAttacker = true;
@@ -112,15 +109,7 @@ function setMessageElements(container) {
                     isDefenderTotal = false;
                 }
                 break;
-            case "TABLE":
-                console.log("Table mit kb, hero, palace, sentinel, etc.");
-                console.log(msgline.className);
-                console.log(msgline.textContent);
-                console.log(isAttacker);
-                console.log(isDefender);
-                console.log(isAttackerTotal);
-                console.log(isDefenderTotal);
-                
+            case "TABLE":                
                 // Unit Table or Ingrediants
                 if ("kbTable designedTable" === msgline.className) {
                     if (isAttackerTotal) {
@@ -198,7 +187,7 @@ function setMessageElements(container) {
                         tempParticipant.ressuractionRate = cellsTemp[0].textContent.split("%")[0].split(" ").last();
                     } else {
                         // hero has skill
-                        tempParticipant.ressuractionRate = rowsTemp[0].cells[1].childNodes[1].textContent;
+                        tempParticipant.ressuractionRate = cellsTemp[1].childNodes[1].textContent;
                     }
                     break;
                 }
@@ -214,8 +203,6 @@ function setMessageElements(container) {
                 }
                 break;
             case "STRONG":
-                console.log("total attacker and defener");
-                console.log(msgline.textContent);
                 // Attacker(Total)
                 if (msgline.textContent.indexOf("Attacker") >= 0) {
                     isAttacker = false;
