@@ -74,7 +74,7 @@ function setMessageElements(container) {
                     battleReportObject.receiver.isWinning = true;
                     battleReportObject.banner = msgline;
                     battleReportObject.banner.style.paddingTop = 0;
-                    battleReportObject.banner.style.height = auto;
+                    battleReportObject.banner.style.height = "auto";
 
                     let resultsprite = battleReportObject.banner.children[0];
                     resultsprite.style.marginBottom = 0;
@@ -85,7 +85,7 @@ function setMessageElements(container) {
                     battleReportObject.receiver.isWinning = false;
                     battleReportObject.banner = msgline;
                     battleReportObject.banner.style.paddingTop = 0;
-                    battleReportObject.banner.style.height = auto;
+                    battleReportObject.banner.style.height = "auto";
 
                     let resultsprite = battleReportObject.banner.children[0];
                     resultsprite.style.marginBottom = 0;
