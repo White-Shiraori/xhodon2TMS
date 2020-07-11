@@ -94,6 +94,9 @@ function setMessageElements(container) {
                 }
                 break;
             case "B":
+                console.log("B for attacker and defender");
+                console.log(msgline.textContent);
+                
                 // Attacker
                 if (msgline.textContent.indexOf("Attacker") > 0) {
                     isAttacker = true;
@@ -110,7 +113,9 @@ function setMessageElements(container) {
                 }
                 break;
             case "TABLE":
+                console.log("Table mit kb, hero, palace, sentinel, etc.");
                 console.log(msgline.className);
+                console.log(msgline.textContent);
                 console.log(isAttacker);
                 console.log(isDefender);
                 console.log(isAttackerTotal);
@@ -209,6 +214,8 @@ function setMessageElements(container) {
                 }
                 break;
             case "STRONG":
+                console.log("total attacker and defener");
+                console.log(msgline.textContent);
                 // Attacker(Total)
                 if (msgline.textContent.indexOf("Attacker") > 0) {
                     isAttacker = false;
