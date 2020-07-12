@@ -1,5 +1,5 @@
 // Show the new Battle Report
-// Sina, have fun :D
+// all styles and elements are to be created by BattleReportStyle.js
 function showNewBattleReport(battleReport, user) {
 
     // our own div with the battle report
@@ -19,8 +19,16 @@ function showNewBattleReport(battleReport, user) {
     maindiv.append(summary);
     
     // Bounty
+    let bounty = createBounty(battleReport);
+    maindiv.append(bounty);
 
     // Runes, Items, Ingredients
+    let rewards = createRewards(battleReport);
+    maindiv.append(rewards);
+
+    // complete Battle Report
+    let completeBattle = createCompleteBattle(battleReport);
+    maindiv.append(completeBattle);
 
     // return the element
     return maindiv;

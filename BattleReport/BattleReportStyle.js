@@ -1,5 +1,5 @@
 // Sina have fun with this
-function createSummaryTable(battleReportObject){
+function createSummaryTable(battleReport){
     let tbl = document.createElement("table");
     tbl.style.width = '100%';
     tbl.style.fontWeight = "bold";
@@ -11,7 +11,7 @@ function createSummaryTable(battleReportObject){
     let header_defender = header.insertCell(1);
     header_defender.colSpan = "2";
 
-    if (battleReportObject.isReceiverWinning) {
+    if (battleReport.isReceiverWinning) {
         header_attacker.innerHTML = "Angreifer hat gewonnen";
         header_attacker.className = "winner";
 
@@ -27,10 +27,10 @@ function createSummaryTable(battleReportObject){
     
     let trooppoints = tbl.insertRow(1);
 
-    let trooppoints_name_winner = trooppoints.insertCell(0);
-    trooppoints_name_winner.innerHTML = "Truppenpunkte";
-    let trooppoints_value_winner = trooppoints.insertCell(1);
-    trooppoints_value_winner.innerHTML = addThousandsSep(666); // ToDo: Einfärben
+    let attacker_tp_name = trooppoints.insertCell(0);
+    attacker_tp_name.innerHTML = "Truppenpunkte";
+    let attacker_tp_value = trooppoints.insertCell(1);
+    attacker_tp_value.innerHTML = addThousandsSep(666); // ToDo: Einfärben
 
     let trooppoints_name_loser = trooppoints.insertCell(2);
     trooppoints_name_loser.innerHTML = "Truppenpunkte";

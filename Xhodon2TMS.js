@@ -11,6 +11,7 @@
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/Utility.js
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/BattleReport/BattleReportStyle.js
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/BattleReport/BattleReportParticipant.js
+// @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/BattleReport/BattleReportResult.js
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/BattleReport/BattleReportObject.js
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/BattleReport/BattleReport.js
 // @require      https://github.com/White-Shiraori/xhodon2TMS/raw/master/Observer.js

@@ -22,4 +22,14 @@ let participant = {
 
     // Ressources raided
     raided: undefined,
+
+    // Results we calculated
+    results: undefined,
 };
+
+function getResultFromParticipant(parti) {
+    if (parti === undefined) {
+        return Object.create(participant);
+    }
+
+}
