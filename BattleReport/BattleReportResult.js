@@ -26,6 +26,11 @@ function getResultFromBattleReport(battleReport) {
             continue;
         }
 
+        // empty hero or spy
+        if (parti.battle === undefined) {
+            continue;
+        }
+
         //loop through battle report
         let unitTable = parti.battle.rows;
         let header = true;
