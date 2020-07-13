@@ -22,16 +22,16 @@ function showNewBattleReport(battleReport, user) {
     maindiv.append(summary);
     
     // Bounty
-    let bounty = createBounty(battleReport);
-    maindiv.append(bounty);
+    //let bounty = createBounty(battleReport);
+    //maindiv.append(bounty);
 
     // Runes, Items, Ingredients
-    let rewards = createRewards(battleReport);
-    maindiv.append(rewards);
+    //let rewards = createRewards(battleReport);
+    //maindiv.append(rewards);
 
     // complete Battle Report
-    let completeBattle = createCompleteBattle(battleReport);
-    maindiv.append(completeBattle);
+    //let completeBattle = createCompleteBattle(battleReport);
+    //maindiv.append(completeBattle);
 
     // return the element
     return maindiv;

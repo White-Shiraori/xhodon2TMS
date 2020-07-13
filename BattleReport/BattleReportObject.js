@@ -14,8 +14,12 @@ function getBattleReportFromContent(messagecontainer, isSimulation) {
 
     // iterate through the elements of the message
     let container = messagecontainer.getElementsByClassName("container")[0].childNodes;
-       
+    
+    // read all elements and fill the battle report
     battleReport = setMessageElements(container, battleReport);
+
+    // calculate the results per participant
+    battleReport = getResultFromBattleReport(battleReport);
 
     // return the now filled object
     return battleReport;
@@ -42,7 +46,10 @@ let battleReportObject = {
         ingredients: "",
     },
     participants: undefined,
-    results: undefined,
+    result: {
+        attacker: undefined,
+        defender: undefined,
+    },
 };
 
 // save the message line and hide
