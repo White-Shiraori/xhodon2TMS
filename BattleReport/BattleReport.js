@@ -1,6 +1,6 @@
 // Show the new Battle Report
 // all styles and elements are to be created by BattleReportStyle.js
-function showNewBattleReport(battleReport, user) {
+function showNewBattleReport(battleReport, user, container) {
 
     // log the battel report
     console.log(battleReport);
@@ -30,8 +30,8 @@ function showNewBattleReport(battleReport, user) {
     //maindiv.append(rewards);
 
     // complete Battle Report
-    //let completeBattle = createCompleteBattle(battleReport);
-    //maindiv.append(completeBattle);
+    let completeBattle = createCompleteBattle(battleReport, container);
+    maindiv.append(completeBattle);
 
     // return the element
     return maindiv;
@@ -62,6 +62,6 @@ function changeBattleReport(content, user) {
 
     // Now lets show whats really important
     let message = battle.getElementsByClassName("message")[0];
-    let maindiv = showNewBattleReport(battleReport, user);
+    let maindiv = showNewBattleReport(battleReport, user, container);
     message.append(maindiv);
 };

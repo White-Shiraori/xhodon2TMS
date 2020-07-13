@@ -124,3 +124,21 @@ function createSummaryTable(battleReport){
   
     return tbl;
 };
+
+function createCompleteBattle(battleReport, container) {
+    let btn = document.createElement("button");
+    let bCollapsed = true;
+    btn.innerHTML = 'Detaillierter Kampfbericht <img src="/game/gfx/icons/up.1544611332.png" class="collapsarrow" onmouseout="nd();" onmouseover="return overlib(\'Aufklappen\');"></img>';
+    btn.className = "collapsible";
+    btn.onclick = () => {
+        collapse(container);
+        if (bCollapsed) {
+            bCollapsed = false;
+            btn.innerHTML = 'Detaillierter Kampfbericht <img src="/game/gfx/icons/down.1548962918.png" class="collapsarrow" onmouseout="nd();" onmouseover="return overlib(\'Zuklappen\');"></img>';
+        } else {
+            bCollapsed = true;
+            btn.innerHTML = 'Detaillierter Kampfbericht <img src="/game/gfx/icons/up.1544611332.png" class="collapsarrow" onmouseout="nd();" onmouseover="return overlib(\'Aufklappen\');"></img>';
+        }
+    }
+    return btn;
+}
