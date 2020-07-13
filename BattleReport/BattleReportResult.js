@@ -33,25 +33,19 @@ function getResultFromBattleReport(battleReport) {
                 header = false;
                 continue;
             };
-            console.log(unitRows);
 
             // Unit
             let unit = getUnitFromName(unitRows.cells[1].textContent)[0];
-            console.log(unit);
             let trooppoints = parseFloat(unit.points);
-            console.log(trooppoints);
 
             // Base Attack
             let baseattack = parseFloat(unit.attack);
-            console.log(baseattack);
 
             // Base Defense
             let basedefense = parseFloat(unit.defense);
-            console.log(basedefense);
 
             // Base Life
             let baselife = parseFloat(unit.life);
-            console.log(baselife);
 
             // Converted
             let conversioncol = unitRows.cells[3].getElementsByClassName("success")[0];
@@ -59,15 +53,10 @@ function getResultFromBattleReport(battleReport) {
             if (conversioncol != undefined) {
                 conversion = parseInt(conversioncol.textContent.replace(/[,.]/g,""));
             }
-            console.log(conversion);
             
             // LOST
             let troopslost = parseFloat(unitRows.cells[4].textContent.replace(/[,.]/g,""));
-            let revivallost = (parseFloat(parti.resurrectionRate)/100.0) - 1.0;
-            console.log(troopslost);
-            console.log(parti.ressurationRate);
-            console.log(revivallost);
-            
+            let revivallost = (parseFloat(parti.resurrectionRate)/100.0) - 1.0;            
 
             // Total
             if (unit.sentinel) {
@@ -82,11 +71,10 @@ function getResultFromBattleReport(battleReport) {
                 parti.result.life += (Math.floor(troopslost*revivallost) + conversion)*baselife;
             }
         }
-        console.log(parti.result);
         if (parti.isAttacker) {
-            battleReport.result.attacker = addResult(battleReport.result, parti.result);
+            battleReport.result.attacker = addResult(battleReport.result.attacker, parti.result);
         } else {
-            battleReport.result.defender = addResult(battleReport.result, parti.result);
+            battleReport.result.defender = addResult(battleReport.result.defender, parti.result);
         }
     }
     if (battleReport.result.attacker === undefined) {
