@@ -161,3 +161,34 @@ function createBounty(battleReport) {
 
     return bountytbl;
 }
+
+function createRewards(battleReport) {
+
+    let rewardtbl = document.createElement("table");
+    let rewardrow = rewardtbl.insertRow(0);
+    let rewardheader = rewardrow.insertCell(0);
+    rewardheader.style.colSpan = 3;
+    rewardheader.innerHTML = "Rewards:";
+
+    let rewards = rewardtbl.insertRow(1);
+
+    // Runes
+    let rewardRunes = rewards.insertCell(0);
+    if (battleReport.receiver.hasRunes) {
+        rewardRunes.innerHTML = "1<img class=\"icon20px runes\" title=\"\" alt=\"Runes\" src=\"/game/gfx/icons/runes.1544611332.png\">";
+    }
+
+    // Ingredients
+    let rewardIngredients = rewards.insertCell(1);
+    if (battleReport.receiver.ingredients != undefined) {
+        rewardIngredients.append(battleReport.receiver.ingredients.children);
+    }
+
+    // Items
+    let rewardItems = rewards.insertCell(2);
+    if (battleReport.receiver.hasItems) {
+        //TODO
+    }
+
+    return rewardtbl;
+}

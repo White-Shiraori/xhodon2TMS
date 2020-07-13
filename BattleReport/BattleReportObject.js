@@ -43,14 +43,14 @@ let battleReportObject = {
         isAttacking: true,
         hasItems: false,
         hasRunes: false,
-        ingredients: "",
+        ingredients: undefined,
     },
     participants: undefined,
     result: {
         attacker: undefined,
         defender: undefined,
         bounty: {
-            header: "Ressources gained or stolen",
+            header: "Ressources gained or taken",
             gold: 0,
             stone: 0,
             crystal: 0,
@@ -221,6 +221,10 @@ function setMessageElements(container, battleReport) {
                 if (msgline.textContent.indexOf("Stone Mantle") >= 0 || msgline.textContent.indexOf("Crystal Tower") >= 0) {
                     tempParticipant.defenseBuilding = msgline;
                     break;
+                }
+                // ingredients
+                if (/^\d+$/.test(msgline.textContent)) {
+                    battleReport.receiver.ingredients = msgline.rows[0].cells[0];
                 }
                 break;
             case "STRONG":
