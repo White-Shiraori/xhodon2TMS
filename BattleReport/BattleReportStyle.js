@@ -11,7 +11,8 @@ function createSummaryTable(battleReport){
     let header_defender = header.insertCell(1);
     header_defender.colSpan = "2";
 
-    if (battleReport.receiver.isWinning) {
+    if ((battleReport.receiver.isAttacking && battleReport.receiver.isWinning) 
+        || (!battleReport.receiver.isAttacking && !battleReport.receiver.isWinning)) {
         header_attacker.innerHTML = "Angreifer hat gewonnen";
         header_attacker.className = "winner";
 
