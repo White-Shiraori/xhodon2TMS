@@ -60,7 +60,7 @@ function getResultFromBattleReport(battleReport) {
 
             // Total
             if (unit.sentinel) {
-                parti.result.troops += (conversion - troopslost)*troopsppoints;
+                parti.result.troops += (conversion - troopslost)*trooppoints;
                 parti.result.attack += (conversion - troopslost)*baseattack;
                 parti.result.defense += (conversion - troopslost)*basedefense;
                 parti.result.life += (conversion - troopslost)*baselife;
