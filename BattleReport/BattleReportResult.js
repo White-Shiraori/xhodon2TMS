@@ -39,10 +39,10 @@ function getResultFromBattleReport(battleReport) {
                 battleReport.result.bounty.header = "Ressources gained: ";
                 if(parti.raided != undefined) {
                     let raids = parti.raided.rows[0].cells[0].children;
-                    battleReport.result.bounty.gold += parseInt(raids[1].textContent);
-                    battleReport.result.bounty.stone += parseInt(raids[2].textContent);
-                    battleReport.result.bounty.crystal += parseInt(raids[3].textContent);
-                    battleReport.result.bounty.herb += parseInt(raids[4].textContent);
+                    battleReport.result.bounty.gold += parseInt(raids[1].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.stone += parseInt(raids[2].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.crystal += parseInt(raids[3].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.herb += parseInt(raids[4].textContent.replace(/[,.]/g,""));
                 }
             }
         } else {
@@ -52,10 +52,10 @@ function getResultFromBattleReport(battleReport) {
                 battleReport.result.bounty.header = "Ressources stolen: ";
                 if(parti.raided != undefined) {
                     let raids = parti.raided.rows[0].cells[0].children;
-                    battleReport.result.bounty.gold += parseInt(raids[1].textContent);
-                    battleReport.result.bounty.stone += parseInt(raids[2].textContent);
-                    battleReport.result.bounty.crystal += parseInt(raids[3].textContent);
-                    battleReport.result.bounty.herb += parseInt(raids[4].textContent);
+                    battleReport.result.bounty.gold += parseInt(raids[1].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.stone += parseInt(raids[2].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.crystal += parseInt(raids[3].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.herb += parseInt(raids[4].textContent.replace(/[,.]/g,""));
                 }
             }
         }
