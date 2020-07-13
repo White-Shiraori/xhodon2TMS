@@ -65,7 +65,7 @@ function getResultFromBattleReport(battleReport) {
                 parti.result.defense += (conversion - troopslost)*basedefense;
                 parti.result.life += (conversion - troopslost)*baselife;
             } else {
-                parti.result.troop_points += (Math.floor(troopslost*revivallost) + conversion)*trooppoints;
+                parti.result.troops += (Math.floor(troopslost*revivallost) + conversion)*trooppoints;
                 parti.result.attack += (Math.floor(troopslost*revivallost) + conversion)*baseattack;
                 parti.result.defense += (Math.floor(troopslost*revivallost) + conversion)*basedefense;
                 parti.result.life += (Math.floor(troopslost*revivallost) + conversion)*baselife;
