@@ -18,6 +18,7 @@ function getResultFromBattleReport(battleReport) {
         if (parti.result === undefined) {
             parti.result = Object.create(result);
         }
+        console.log(parti);
 
         //total battle and sentinal are excluded for now
         if (parti.isAttackerTotal || parti.isDefenderTotal || parti.isSentinel) {
