@@ -77,6 +77,12 @@ function getResultFromBattleReport(battleReport) {
             battleReport.result.defender = addResult(battleReport.result, parti.result);
         }
     }
+    if (battleReport.result.attacker === undefined) {
+        battleReport.result.attacker = Object.create(result);
+    }
+    if (battleReport.result.defender === undefined) {
+        battleReport.result.defender = Object.create(result);
+    }
     return battleReport;
 }
 
