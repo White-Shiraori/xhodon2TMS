@@ -60,11 +60,12 @@ function getResultFromBattleReport(battleReport) {
                 conversion = parseInt(conversioncol.textContent.replace(/[,.]/g,""));
             }
             console.log(conversion);
-
+            
             // LOST
             let troopslost = parseFloat(unitRows.cells[4].textContent.replace(/[,.]/g,""));
             let revivallost = (parseFloat(parti.ressurationRate)/100.0) - 1.0;
             console.log(troopslost);
+            console.log(parti.ressurationRate);
             console.log(revivallost);
             
 

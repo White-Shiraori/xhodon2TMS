@@ -193,14 +193,14 @@ function setMessageElements(container, battleReport) {
                     break;
                 }
                 // Ressurection
-                if (msgline.textContent.indexOf("%") > 0) {
+                if (msgline.textContent.indexOf("Resurrect") > 0) {
                     let cellsTemp = msgline.rows[0].cells;
                     if (cellsTemp[1] === undefined) {
                         // hero has no skill
-                        tempParticipant.ressuractionRate = cellsTemp[0].textContent.split("%")[0].split(" ").last();
+                        tempParticipant.ressuractionRate = parseFloat(cellsTemp[0].textContent.split("%")[0].split(" ").last());
                     } else {
                         // hero has skill
-                        tempParticipant.ressuractionRate = cellsTemp[1].childNodes[1].textContent;
+                        tempParticipant.ressuractionRate = parseFloat(cellsTemp[1].childNodes[1].textContent);
                     }
                     break;
                 }
