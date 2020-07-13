@@ -2,6 +2,9 @@
 // all styles and elements are to be created by BattleReportStyle.js
 function showNewBattleReport(battleReport, user) {
 
+    // log the battel report
+    console.log(battleReport);
+
     // our own div with the battle report
     let maindiv = document.createElement("div");
     
