@@ -18,7 +18,7 @@ let participant = {
     items: new Array(3),
 
     // fallen troops in our Shaman Hut percentage
-    ressurationRate: 0.00,
+    resurrectionRate: 0.00,
 
     // Ressources raided
     raided: undefined,

@@ -197,10 +197,10 @@ function setMessageElements(container, battleReport) {
                     let cellsTemp = msgline.rows[0].cells;
                     if (cellsTemp[1] === undefined) {
                         // hero has no skill
-                        tempParticipant.ressuractionRate = parseFloat(cellsTemp[0].textContent.split("%")[0].split(" ").last());
+                        tempParticipant.resurrectionRate = parseFloat(cellsTemp[0].textContent.split("%")[0].split(" ").last());
                     } else {
                         // hero has skill
-                        tempParticipant.ressuractionRate = parseFloat(cellsTemp[1].childNodes[1].textContent);
+                        tempParticipant.resurrectionRate = parseFloat(cellsTemp[1].childNodes[1].textContent);
                     }
                     break;
                 }
