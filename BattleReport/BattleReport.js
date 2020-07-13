@@ -20,6 +20,8 @@ function showNewBattleReport(battleReport, user, container) {
     // Summary Table
     let summary = createSummaryTable(battleReport);
     maindiv.append(summary);
+    maindiv.append(document.createElement("br"));
+    maindiv.append(document.createElement("br"));
     
     // Bounty
     //let bounty = createBounty(battleReport);
@@ -32,6 +34,8 @@ function showNewBattleReport(battleReport, user, container) {
     // complete Battle Report
     let completeBattle = createCompleteBattle(battleReport, container);
     maindiv.append(completeBattle);
+    maindiv.append(document.createElement("br"));
+    maindiv.append(document.createElement("br"));
 
     // return the element
     return maindiv;
