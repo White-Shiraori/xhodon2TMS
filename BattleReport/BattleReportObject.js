@@ -10,12 +10,12 @@ function getBattleReportFromContent(messagecontainer, isSimulation) {
 
     // the messagecontent consists of 3 elements
     // message-top, message and message-bottom
-    setBattleTime(messagecontainer);   
+    battleReport = setBattleTime(messagecontainer, battleReport);   
 
     // iterate through the elements of the message
     let container = messagecontainer.getElementsByClassName("container")[0].childNodes;
        
-    setMessageElements(container);
+    battleReport = setMessageElements(container, battleReport);
 
     // return the now filled object
     return battleReport;
@@ -46,7 +46,10 @@ let battleReportObject = {
 };
 
 // save the message line and hide
-function setMessageElements(container) {
+function setMessageElements(container, battleReport) {
+    if (battleReport === undefined) {
+        battleReport = Object.create(battleReportObject);
+    }
 
     let tempParticipant = undefined;
     let isAttacker = false;
@@ -258,11 +261,12 @@ function setMessageElements(container) {
         battleReport.participants[participantCounter] = tempParticipant;
         participantCounter++;
     }
+    return battleReport;
 }
 
 // retrieve the time from the header
 // hides the original header
-function setBattleTime(messagecontainer) {
+function setBattleTime(messagecontainer, battleReport) {
 
     if(battleReport.isSimulation) {
         let time = new Date();
@@ -332,7 +336,7 @@ function setBattleTime(messagecontainer) {
         }
         let year = time.getFullYear().toString().substr(2);
         battleReport.time = `${daystring}, ${time.getDate()}. ${monthstring} ${year} ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
-        return;
+        return battleReport;
     }
 
     // message-top only contains the time
@@ -343,4 +347,5 @@ function setBattleTime(messagecontainer) {
 
     let mtoptext = mtop.children[0].children[0].innerHTML;
     battleReport.time = mtoptext.split(" am ")[1];
+    return battleReport;
 }
