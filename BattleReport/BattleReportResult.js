@@ -31,6 +31,35 @@ function getResultFromBattleReport(battleReport) {
             continue;
         }
 
+        // add bounty
+        if (battleReport.receiver.isWinning) {
+            // Ressources gained
+            if ((battleReport.receiver.isAttacking && parti.isAttacker) 
+            || (!battleReport.receiver.isAttacking && !parti.isAttacker)) {
+                battleReport.result.bounty.header = "Ressources gained: ";
+                if(parti.raided != undefined) {
+                    let raids = parti.raided.rows[0].cells[0].children;
+                    battleReport.result.bounty.gold += parseInt(raids[1].textContent);
+                    battleReport.result.bounty.stone += parseInt(raids[2].textContent);
+                    battleReport.result.bounty.crystal += parseInt(raids[3].textContent);
+                    battleReport.result.bounty.herb += parseInt(raids[4].textContent);
+                }
+            }
+        } else {
+            // Ressources stolen
+            if ((battleReport.receiver.isAttacking && !parti.isAttacker) 
+            || (!battleReport.receiver.isAttacking && parti.isAttacker)) {
+                battleReport.result.bounty.header = "Ressources stolen: ";
+                if(parti.raided != undefined) {
+                    let raids = parti.raided.rows[0].cells[0].children;
+                    battleReport.result.bounty.gold += parseInt(raids[1].textContent);
+                    battleReport.result.bounty.stone += parseInt(raids[2].textContent);
+                    battleReport.result.bounty.crystal += parseInt(raids[3].textContent);
+                    battleReport.result.bounty.herb += parseInt(raids[4].textContent);
+                }
+            }
+        }
+
         //loop through battle report
         let unitTable = parti.battle.rows;
         let header = true;

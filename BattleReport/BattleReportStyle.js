@@ -142,3 +142,22 @@ function createCompleteBattle(battleReport, container) {
     }
     return btn;
 }
+
+function createBounty(battleReport) {
+    let bountytbl = document.createElement("table");
+    let bountyrow = bountytbl.insertRow(0);
+    let bountycell = bountyrow.insertCell(0);
+
+    let goldimg = "<br><img height=\"15\" alt=\"Gold Resin\" title=\"Gold Resin\" src=\"/game/gfx//icons/goldharz.png\">";
+    let stoneimg = "<img height=\"15\" alt=\"Power Stones\" title=\"Power Stones\" src=\"/game/gfx//icons/kraftstein.png\">";
+    let crystalimg = "<img height=\"15\" alt=\"Crystal Splinters\" title=\"Crystal Splinters\" src=\"/game/gfx//icons/kristall.png\">";
+    let herbimg = "<img height=\"15\" alt=\"Herb Essences\" title=\"Herb Essences\" src=\"/game/gfx//icons/essenz.png\">";
+
+    bountycell.innerHTML = battleReport.result.bounty.header 
+                            + goldimg + battleReport.result.bounty.gold 
+                            + stoneimg + battleReport.result.bounty.stone 
+                            + crystalimg + battleReport.result.bounty.crystal 
+                            + herbimg + battleReport.result.bounty.herb;
+
+    return bountytbl;
+}

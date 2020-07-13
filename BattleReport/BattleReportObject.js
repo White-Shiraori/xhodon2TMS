@@ -49,6 +49,14 @@ let battleReportObject = {
     result: {
         attacker: undefined,
         defender: undefined,
+        bounty: {
+            header: "Ressources gained or stolen",
+            gold: 0,
+            stone: 0,
+            crystal: 0,
+            herb: 0,
+        },
+        items: undefined,
     },
 };
 

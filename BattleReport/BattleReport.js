@@ -24,8 +24,10 @@ function showNewBattleReport(battleReport, user, container) {
     maindiv.append(document.createElement("br"));
     
     // Bounty
-    //let bounty = createBounty(battleReport);
-    //maindiv.append(bounty);
+    let bounty = createBounty(battleReport);
+    maindiv.append(bounty);
+    maindiv.append(document.createElement("br"));
+    maindiv.append(document.createElement("br"));
 
     // Runes, Items, Ingredients
     //let rewards = createRewards(battleReport);
