@@ -154,10 +154,10 @@ function createBounty(battleReport) {
     let herbimg = "<img height=\"15\" alt=\"Herb Essences\" title=\"Herb Essences\" src=\"/game/gfx//icons/essenz.png\">";
 
     bountycell.innerHTML = battleReport.result.bounty.header 
-                            + goldimg + battleReport.result.bounty.gold 
-                            + stoneimg + battleReport.result.bounty.stone 
-                            + crystalimg + battleReport.result.bounty.crystal 
-                            + herbimg + battleReport.result.bounty.herb;
+                            + goldimg + addThousandsSep(battleReport.result.bounty.gold) 
+                            + stoneimg + addThousandsSep(battleReport.result.bounty.stone) 
+                            + crystalimg + addThousandsSep(battleReport.result.bounty.crystal)
+                            + herbimg + addThousandsSep(battleReport.result.bounty.herb);
 
     return bountytbl;
 }
