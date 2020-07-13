@@ -38,16 +38,16 @@ function getResultFromBattleReport(battleReport) {
             || (!battleReport.receiver.isAttacking && !parti.isAttacker)) {
                 battleReport.result.bounty.header = "Ressources gained: ";
                 if(parti.raided != undefined) {
-                    let raids = parti.raided.rows[0].cells[0].children;
+                    let raids = parti.raided.rows[0].cells[0].childNodes;
                     console.log(raids);
-                    console.log(raids[1].textContent);
-                    console.log(raids[2].textContent);
                     console.log(raids[3].textContent);
-                    console.log(raids[4].textContent);
-                    battleReport.result.bounty.gold += parseInt(raids[1].textContent.replace(/[,.]/g,""));
-                    battleReport.result.bounty.stone += parseInt(raids[2].textContent.replace(/[,.]/g,""));
-                    battleReport.result.bounty.crystal += parseInt(raids[3].textContent.replace(/[,.]/g,""));
-                    battleReport.result.bounty.herb += parseInt(raids[4].textContent.replace(/[,.]/g,""));
+                    console.log(raids[5].textContent);
+                    console.log(raids[7].textContent);
+                    console.log(raids[9].textContent);
+                    battleReport.result.bounty.gold += parseInt(raids[3].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.stone += parseInt(raids[5].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.crystal += parseInt(raids[7].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.herb += parseInt(raids[9].textContent.replace(/[,.]/g,""));
                 }
             }
         } else {
@@ -56,16 +56,16 @@ function getResultFromBattleReport(battleReport) {
             || (!battleReport.receiver.isAttacking && parti.isAttacker)) {
                 battleReport.result.bounty.header = "Ressources stolen: ";
                 if(parti.raided != undefined) {
-                    let raids = parti.raided.rows[0].cells[0].children;
+                    let raids = parti.raided.rows[0].cells[0].childNodes;
                     console.log(raids);
-                    console.log(raids[1].textContent);
-                    console.log(raids[2].textContent);
                     console.log(raids[3].textContent);
-                    console.log(raids[4].textContent);
-                    battleReport.result.bounty.gold += parseInt(raids[1].textContent.replace(/[,.]/g,""));
-                    battleReport.result.bounty.stone += parseInt(raids[2].textContent.replace(/[,.]/g,""));
-                    battleReport.result.bounty.crystal += parseInt(raids[3].textContent.replace(/[,.]/g,""));
-                    battleReport.result.bounty.herb += parseInt(raids[4].textContent.replace(/[,.]/g,""));
+                    console.log(raids[5].textContent);
+                    console.log(raids[7].textContent);
+                    console.log(raids[9].textContent);
+                    battleReport.result.bounty.gold += parseInt(raids[3].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.stone += parseInt(raids[5].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.crystal += parseInt(raids[7].textContent.replace(/[,.]/g,""));
+                    battleReport.result.bounty.herb += parseInt(raids[9].textContent.replace(/[,.]/g,""));
                 }
             }
         }
