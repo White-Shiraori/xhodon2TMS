@@ -63,5 +63,5 @@ function changeBattleReport(content, user) {
     // Now lets show whats really important
     let message = battle.getElementsByClassName("message")[0];
     let maindiv = showNewBattleReport(battleReport, user, container);
-    message.append(maindiv);
+    message.insertBefore(maindiv, container);
 };
