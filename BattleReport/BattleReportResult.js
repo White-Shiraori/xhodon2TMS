@@ -15,6 +15,10 @@ function getResultFromBattleReport(battleReport) {
 
     battleReport.result.attacker = Object.create(result);
     battleReport.result.defender = Object.create(result);
+    battleReport.result.gold = 0;
+    battleReport.result.stone = 0;
+    battleReport.result.crystal = 0;
+    battleReport.result.herb = 0;
 
     // for all participants
     for (let parti of battleReport.participants){
