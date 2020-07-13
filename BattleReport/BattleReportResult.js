@@ -55,7 +55,7 @@ function getResultFromBattleReport(battleReport) {
 
             // LOST
             let troopslost = parseFloat(unitRows.cells[4].textContent.replace(/[,.]/g,""));
-            let revivallost = (parseFloat(revival_percent)/100.0) - 1.0;
+            let revivallost = (parseFloat(parti.ressurationRate)/100.0) - 1.0;
             
 
             // Total
