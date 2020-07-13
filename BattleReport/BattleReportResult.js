@@ -13,12 +13,13 @@ let result = {
 
 function getResultFromBattleReport(battleReport) {
 
+    battleReport.result.attacker = Object.create(result);
+    battleReport.result.defender = Object.create(result);
+
     // for all participants
     for (let parti of battleReport.participants){
-        if (parti.result === undefined) {
-            parti.result = Object.create(result);
-        }
-        console.log(parti);
+
+        parti.result = Object.create(result);
 
         //total battle and sentinal are excluded for now
         if (parti.isAttackerTotal || parti.isDefenderTotal || parti.isSentinel) {
@@ -76,12 +77,6 @@ function getResultFromBattleReport(battleReport) {
         } else {
             battleReport.result.defender = addResult(battleReport.result.defender, parti.result);
         }
-    }
-    if (battleReport.result.attacker === undefined) {
-        battleReport.result.attacker = Object.create(result);
-    }
-    if (battleReport.result.defender === undefined) {
-        battleReport.result.defender = Object.create(result);
     }
     return battleReport;
 }
