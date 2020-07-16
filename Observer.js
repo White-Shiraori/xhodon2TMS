@@ -38,7 +38,7 @@ function addObserverIfDesiredNodeAvailable() {
         return;
     }
     tutorialDone = true;    
-    let tutorialoverlay = document.getElementById('sideBoxContainer');
+    let tutorialoverlay = document.getElementById('tutorialOverlay');
     tutorialoverlay.style.display = "none";
     let targetNode = document.getElementById('content');
     if(!targetNode) {
