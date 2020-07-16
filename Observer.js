@@ -37,7 +37,7 @@ function addObserverIfDesiredNodeAvailable() {
         window.setTimeout(addObserverIfDesiredNodeAvailable,500);
         return;
     }
-    tutorialDone = 1;    
+    tutorialDone = true;    
     let targetNode = document.getElementById('content');
     if(!targetNode) {
         //The node we need does not exist yet.
