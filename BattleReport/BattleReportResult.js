@@ -30,6 +30,19 @@ function getResultFromBattleReport(battleReport) {
             continue;
         }
 
+        // is user of script a participant?
+        // only participants can have items
+        let partiName = parti.player.getElementsByClassName("userlink_name")[0].textContent;
+        if (partiName === GM_getValue("x2userName")) {
+            parti.isReceiver = true;
+        } 
+        
+        if (parti.isHero) {
+            // Experience
+            let exp = parti.player.textContent.split(GM_getValue("x2exp-"+GM_getValue("x2blanguage")))[1].replace(/[,.]/g,"");
+            parti.result.hero = parseInt(exp);
+        }
+
         // empty hero or spy
         if (parti.battle === undefined) {
             continue;
@@ -42,7 +55,15 @@ function getResultFromBattleReport(battleReport) {
             || (!battleReport.receiver.isAttacking && !parti.isAttacker)) {
                 battleReport.result.bounty.header = "Ressources gained: ";
                 if(parti.raided != undefined) {
-                    let raids = parti.raided.rows[0].cells[0].childNodes;
+
+                    let raids;
+                    if (parti.raided.rows[0].cells[1] === undefined) {
+                        // no skill
+                        raids = parti.raided.rows[0].cells[0].childNodes;
+                    } else {
+                        // skill greed
+                        raids = parti.raided.rows[0].cells[1].childNodes;
+                    }
                     battleReport.result.bounty.gold += parseInt(raids[3].textContent.replace(/[,.]/g,""));
                     battleReport.result.bounty.stone += parseInt(raids[5].textContent.replace(/[,.]/g,""));
                     battleReport.result.bounty.crystal += parseInt(raids[7].textContent.replace(/[,.]/g,""));
@@ -55,7 +76,15 @@ function getResultFromBattleReport(battleReport) {
             || (!battleReport.receiver.isAttacking && parti.isAttacker)) {
                 battleReport.result.bounty.header = "Ressources stolen: ";
                 if(parti.raided != undefined) {
-                    let raids = parti.raided.rows[0].cells[0].childNodes;
+
+                    let raids;
+                    if (parti.raided.rows[0].cells[1] === undefined) {
+                        // no skill
+                        raids = parti.raided.rows[0].cells[0].childNodes;
+                    } else {
+                        // skill greed
+                        raids = parti.raided.rows[0].cells[1].childNodes;
+                    }
                     battleReport.result.bounty.gold += parseInt(raids[3].textContent.replace(/[,.]/g,""));
                     battleReport.result.bounty.stone += parseInt(raids[5].textContent.replace(/[,.]/g,""));
                     battleReport.result.bounty.crystal += parseInt(raids[7].textContent.replace(/[,.]/g,""));

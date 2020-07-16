@@ -16,11 +16,10 @@ const callback = function(mutationsList, observer) {
 
                 // User of the script
                 let menueUser = document.getElementById("menu-user");
-                let user = {
-                    name: menueUser.getElementsByClassName("userlink_name")[0].textContent,
-                    guild: menueUser.getElementsByClassName("userlink_tag")[0].textContent,
-                };  
-                changeBattleReport(targetNode, user);
+                GM_setValue("x2userName", menueUser.getElementsByClassName("userlink_name")[0].textContent);
+                GM_setValue("x2userGuild", menueUser.getElementsByClassName("userlink_tag")[0].textContent);
+                setUserLanguage();
+                changeBattleReport(targetNode);
                 break;
             }
         }

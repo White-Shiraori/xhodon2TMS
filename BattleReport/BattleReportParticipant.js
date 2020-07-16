@@ -4,6 +4,12 @@ let participant = {
     // player, sentinel or palace
     player: undefined,
 
+    // is the Receiver of the Battle Report
+    isReceiver: false,
+
+    isHero: false,
+    isPalace: false,
+
     // stone matle and crystal tower
     defenseBuilding: undefined,
 
@@ -18,7 +24,7 @@ let participant = {
     items: new Array(3),
 
     // fallen troops in our Shaman Hut percentage
-    resurrectionRate: 0.00,
+    resurrectionRate: 90.00,
 
     // Ressources raided
     raided: undefined,

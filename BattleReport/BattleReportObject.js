@@ -50,7 +50,7 @@ let battleReportObject = {
         attacker: undefined,
         defender: undefined,
         bounty: {
-            header: "Ressources gained or taken",
+            header: GM_getValue("x2raided-"+GM_getValue("x2language")),
             gold: 0,
             stone: 0,
             crystal: 0,
@@ -96,6 +96,8 @@ function setMessageElements(container, battleReport) {
                     battleReport.banner = msgline;
                     battleReport.banner.style.paddingTop = 0;
                     battleReport.banner.style.height = "auto";
+                    battleReport.banner.style.width = "600px";
+                    battleReport.banner.style.backgroundSize = "600px";
 
                     let resultsprite = battleReport.banner.children[0];
                     resultsprite.style.marginBottom = 0;
@@ -107,6 +109,8 @@ function setMessageElements(container, battleReport) {
                     battleReport.banner = msgline;
                     battleReport.banner.style.paddingTop = 0;
                     battleReport.banner.style.height = "auto";
+                    battleReport.banner.style.width = "600px";
+                    battleReport.banner.style.backgroundSize = "600px";
 
                     let resultsprite = battleReport.banner.children[0];
                     resultsprite.style.marginBottom = 0;
@@ -116,14 +120,14 @@ function setMessageElements(container, battleReport) {
                 break;
             case "B":                
                 // Attacker
-                if (msgline.textContent.indexOf("Attacker") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2attacker-"+GM_getValue("x2blanguage"))) >= 0) {
                     isAttacker = true;
                     isDefender = false;
                     isAttackerTotal = false;
                     isDefenderTotal = false;
                 }
                 // Defender
-                if (msgline.textContent.indexOf("Defender") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2defender-"+GM_getValue("x2blanguage"))) >= 0) {
                     isAttacker = false;
                     isDefender = true;
                     isAttackerTotal = false;
@@ -155,7 +159,7 @@ function setMessageElements(container, battleReport) {
                     break;                    
                 }
                 // Hero
-                if (msgline.textContent.indexOf("Hero") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2hero-"+GM_getValue("x2blanguage"))) >= 0) {
                     // new participant
                     if (tempParticipant != undefined) {
                         battleReport.participants[participantCounter] = tempParticipant;
@@ -168,10 +172,11 @@ function setMessageElements(container, battleReport) {
                     tempParticipant.isDefender = isDefender;
                     tempParticipant.isSentinel = false;
                     tempParticipant.player = msgline;
+                    tempParticipant.isHero = true;
                     break;
                 }
                 // Palace
-                if (msgline.textContent.indexOf("Palace") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2palace-"+GM_getValue("x2blanguage"))) >= 0) {
                     // new participant
                     if (tempParticipant != undefined) {
                         battleReport.participants[participantCounter] = tempParticipant;
@@ -183,10 +188,11 @@ function setMessageElements(container, battleReport) {
                     tempParticipant.isDefender = true;
                     tempParticipant.isSentinel = false;
                     tempParticipant.player = msgline;
+                    tempParticipant.isPalace = true;
                     break;
                 }
                 // Sentinel
-                if (msgline.textContent.indexOf("Sentinel") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2sentinel-"+GM_getValue("x2blanguage"))) >= 0) {
                     // new participant
                     if (tempParticipant != undefined) {
                         battleReport.participants[participantCounter] = tempParticipant;
@@ -201,7 +207,7 @@ function setMessageElements(container, battleReport) {
                     break;
                 }
                 // Ressurection
-                if (msgline.textContent.indexOf("Resurrect") > 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2resurrect-"+GM_getValue("x2blanguage"))) > 0) {
                     let cellsTemp = msgline.rows[0].cells;
                     if (cellsTemp[1] === undefined) {
                         // hero has no skill
@@ -213,12 +219,12 @@ function setMessageElements(container, battleReport) {
                     break;
                 }
                 // Ressources raided
-                if (msgline.textContent.indexOf("Raided") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2raided-"+GM_getValue("x2blanguage"))) >= 0) {
                     tempParticipant.raided = msgline;
                     break;
                 }
                 // Stone Mantle and Crystal Tower
-                if (msgline.textContent.indexOf("Stone Mantle") >= 0 || msgline.textContent.indexOf("Crystal Tower") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2stonemantle-"+GM_getValue("x2blanguage"))) >= 0 || msgline.textContent.indexOf(GM_getValue("x2crystaltower-"+GM_getValue("x2blanguage"))) >= 0) {
                     tempParticipant.defenseBuilding = msgline;
                     break;
                 }
@@ -229,14 +235,14 @@ function setMessageElements(container, battleReport) {
                 break;
             case "STRONG":
                 // Attacker(Total)
-                if (msgline.textContent.indexOf("Attacker") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2attacker-"+GM_getValue("x2blanguage"))) >= 0) {
                     isAttacker = false;
                     isDefender = false;
                     isAttackerTotal = true;
                     isDefenderTotal = false;
                 }
                 // Defender(Total)
-                if (msgline.textContent.indexOf("Defender") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2defender-"+GM_getValue("x2blanguage"))) >= 0) {
                     isAttacker = false;
                     isDefender = false;
                     isAttackerTotal = false;
@@ -245,24 +251,24 @@ function setMessageElements(container, battleReport) {
                 break;
             case "P":
                 // Items
-                if (msgline.textContent.indexOf("Item") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2item-"+GM_getValue("x2blanguage"))) >= 0) {
                     battleReport.receiver.hasItems = true;
                 }
                 // Runes
-                if (msgline.textContent.indexOf("Rune") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2rune-"+GM_getValue("x2blanguage"))) >= 0) {
                     battleReport.receiver.hasRunes = true;
                 }
                 break;
             case undefined:
-                if (msgline.textContent.indexOf("attacked") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2attacked-"+GM_getValue("x2blanguage"))) >= 0) {
                     battleReport.receiver.isAttacking = true;
                     battleReport.subject.original = msgline.textContent;
                 }
-                if (msgline.textContent.indexOf("defended") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2defended-"+GM_getValue("x2blanguage"))) >= 0) {
                     battleReport.receiver.isAttacking = false;
                     battleReport.subject.original = msgline.textContent;
                 }
-                if (msgline.textContent.indexOf("Rounds") >= 0) {
+                if (msgline.textContent.indexOf(GM_getValue("x2rounds-"+GM_getValue("x2blanguage"))) >= 0) {
                     battleReport.fightRounds = Number.parseInt(msgline.textContent.split(":")[1]);
                 }
                 break;
