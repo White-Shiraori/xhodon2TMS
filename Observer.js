@@ -30,6 +30,14 @@ const callback = function(mutationsList, observer) {
 const observer = new MutationObserver(callback);
 
 function addObserverIfDesiredNodeAvailable() {
+    let tutorial = document.getElementById('sideBoxContainer');
+    if(!tutorial) {
+        //The node we need does not exist yet.
+        //Wait 500ms and try again
+        window.setTimeout(addObserverIfDesiredNodeAvailable,500);
+        return;
+    }
+    tutorialDone = 1;    
     let targetNode = document.getElementById('content');
     if(!targetNode) {
         //The node we need does not exist yet.
