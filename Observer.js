@@ -38,6 +38,8 @@ function addObserverIfDesiredNodeAvailable() {
         return;
     }
     tutorialDone = true;    
+    let tutorialoverlay = document.getElementById('sideBoxContainer');
+    tutorialoverlay.style.display = "none";
     let targetNode = document.getElementById('content');
     if(!targetNode) {
         //The node we need does not exist yet.
